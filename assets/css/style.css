@@ -26,3 +26,33 @@ form{display: flex;
     border-radius: 0;
 
 }
+
+
+.giphy-content{
+    column-count: 3;
+    column-gap: 1.5em;
+}
+
+.giphy{
+    border: 1px solid orange;
+    page-break-inside: avoid;
+    position: relative;
+
+}
+
+.giphy img{
+    height: 100%;
+    width: 100%;
+
+}
+
+.fa-play {
+    font-size: 1em;
+    background-color: yellow;
+    border-radius: 50%;
+    padding:1em;
+    position: absolute;
+    top:25%;
+    left:50%;
+    transform: translate(-50%,0);
+}
