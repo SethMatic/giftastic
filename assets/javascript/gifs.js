@@ -137,11 +137,97 @@ function getGiphy(value) {
 function searchGiphy(event){
     event.preventDefault();
     const value = $('#search').val();
+
+    if (buttons.includes(value)){
+        alert('Already Searched');
+    } else {
     addButton(value);
     getGiphy(value);
+    }
+    $('#search').val('');
+}
 
-    
 
+function imgCardClick(){
+    const giphyCard = $(this);
+
+    const img = giphyCard.find('img')
+    const icon = giphyCard.find('i');
+
+    const still = img.attr('data-still');
+    const animate = img.attr('data-animate');
+    const state = img.attr('data-state');
+
+    if (state === 'still') {
+        img.attr({
+            src:animate,
+            'data-state':'animate'
+        });
+
+    icon.removeClass('img-play')
+
+
+    } else {
+        img.attr({
+            src:still,
+            'data-state':'still'
+        });
+
+        icon.addClass('img-play')
+    }
+
+
+
+}
+
+
+function copyClipboard(value){
+    const tempElement = $('<input>');
+    $('body').append(tempElement);
+
+    tempElement.val(value).select();
+    document.execCommand('copy');
+    tempElement.remove();
+}
+
+
+function copyLink(){
+ 
+    const link= $(this).attr('data-link');
+    const content = $(this).html();
+
+    copyClipboard(link);
+
+    $(this).html('COPIED!');
+
+    setTimeout(() => $(this).html(content),2000);
+
+
+
+}
+
+
+
+function buttonSearch(){
+    const buttonName = $(this).attr('data-name');
+    const parent = $(this).parent();
+
+    $('.btn').parent().removeClass('active');
+    parent.addClass('active');
+
+    getGiphy(buttonName);
+
+}
+
+
+
+
+
+function clearResult(){
+    event.preventDefault();
+
+    $('.btn').parent().removeClass('active');
+    $('.giphy-content').html('<p>RESULTS CLEARED</p>');
 
 
 }
@@ -150,8 +236,16 @@ function searchGiphy(event){
 
 ///events
 $(document).on('click','.btn-delete',removeButton);
+$(document).on('click','.giphy-image',imgCardClick);
+
+$(document).on('click','.btn-search',buttonSearch);
+
+
+
+$(document).on('click','.giphy-footer',copyLink);    
+
 $('#submit-button').on('click',searchGiphy);
-    
+$('#clear-results').on('click',clearResult);
 
 
 

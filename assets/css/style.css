@@ -1,3 +1,6 @@
+
+
+
 form{display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -35,8 +38,16 @@ form{display: flex;
 
 .giphy{
     border: 1px solid orange;
-    page-break-inside: avoid;
+    border-radius: .5em;
+    border-bottom: .5em solid cornflowerblue;
     position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    margin-bottom: .5em;
+    page-break-inside: avoid;
+    background-color: coral;
+    box-shadow: 10px 19px 11px rbga(0,0,0.5);
 
 }
 
@@ -55,4 +66,45 @@ form{display: flex;
     top:25%;
     left:50%;
     transform: translate(-50%,0);
+    color:white;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.favorite{
+    position: absolute;
+    right:0;
+    cursor: pointer;
+    border-bottom-left-radius: 1em;
+    background-color: darkolivegreen;
+    padding:.5em;
+    
+}
+
+.giphy-image:hover .img-play{
+    opacity: 1;
+
+}
+
+.giphy-info{
+    display:flex;
+    justify-content: space-between;
+    margin: 2em .5em;
+}
+
+.giphy-footer{
+    text-align: center;
+    border: 1px solid pink;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    cursor: pointer;
+    background-color: orchid
+
+
+}
+
+
+.active{
+    background-color: yellow;
 }
